@@ -79,6 +79,8 @@ final class MovieQuizViewController: UIViewController {
     
     @IBOutlet private weak var yesButton: UIButton!
     
+    
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,13 +121,29 @@ final class MovieQuizViewController: UIViewController {
         
     }
     
+    private func showAnswerResult(isCorrect: Bool) {
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 8
+        imageView.layer.borderColor = isCorrect ? UIColor.ypGreenIOS.cgColor : UIColor.ypRedIOS.cgColor
+        imageView.layer.cornerRadius = 20
+    }
     
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
+        
+        let currentQuestion = questions[currentQuestionIndex]
+        let givenAnswer = true
+        
+        showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
     }
     
     
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
+        
+        let currentQuestion = questions[currentQuestionIndex]
+        let givenAnswer = false
+        
+        showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
     }
 }
 
