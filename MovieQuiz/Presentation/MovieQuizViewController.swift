@@ -96,9 +96,10 @@ final class MovieQuizViewController: UIViewController {
         
         let currentQuestion = questions[currentQuestionIndex]
         
-        show(quiz: convert(model: currentQuestion))
-
+        let preparedImage = convert(model: currentQuestion)
         
+        show(quiz: preparedImage)
+
 
     }
     
