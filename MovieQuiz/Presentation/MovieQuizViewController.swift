@@ -126,8 +126,23 @@ final class MovieQuizViewController: UIViewController {
         imageView.layer.borderWidth = 8
         imageView.layer.borderColor = isCorrect ? UIColor.ypGreenIOS.cgColor : UIColor.ypRedIOS.cgColor
         imageView.layer.cornerRadius = 20
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+           self.showNextQuestionOrResults()
+        }
     }
     
+    private func showNextQuestionOrResults() {
+        if currentQuestionIndex == questions.count - 1 {
+            //идем в ссостояние "результат квиза"
+        } else {
+            currentQuestionIndex += 1
+            
+            let nextQuestion = questions[currentQuestionIndex]
+            let viewModel = convert(model: nextQuestion)
+            show(quiz: viewModel)
+        }
+    }
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
         
