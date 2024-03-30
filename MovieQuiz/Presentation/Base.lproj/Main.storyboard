@@ -44,12 +44,31 @@
                                             <constraint firstAttribute="width" secondItem="EIk-9d-gy8" secondAttribute="height" multiplier="2:3" id="39z-O7-zlz"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг этого фильма меньше, чем 5?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmN-d2-Bc3" userLabel="Question Label">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xrH-yW-nsd">
                                         <rect key="frame" x="0.0" y="621.5" width="374" height="102.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="YP White (iOS)"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xs6-Dh-hog">
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="102.5"/>
+                                                <color key="backgroundColor" name="YP Background (iOS)"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="42" id="uyn-rd-O1d"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг этого фильма меньше, чем 5?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmN-d2-Bc3" userLabel="Question Label">
+                                                <rect key="frame" x="42" y="31" width="290" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="YP White (iOS)"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z61-X4-I74">
+                                                <rect key="frame" x="332" y="0.0" width="42" height="102.5"/>
+                                                <color key="backgroundColor" name="YP Background (iOS)"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="42" id="wm6-9G-wKG"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kOg-P3-fg4">
                                         <rect key="frame" x="0.0" y="744" width="374" height="60"/>
                                         <subviews>
@@ -118,6 +137,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="YP Background (iOS)">
+            <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="YP Black (iOS)">
             <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
