@@ -43,6 +43,11 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EIk-9d-gy8" secondAttribute="height" multiplier="2:3" id="39z-O7-zlz"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xrH-yW-nsd">
                                         <rect key="frame" x="0.0" y="621.5" width="374" height="102.5"/>
