@@ -2,6 +2,13 @@ import UIKit
 
 final class MovieQuizViewController: UIViewController {
     
+    @IBOutlet private weak var questionTitleLabel: UILabel!
+    @IBOutlet private weak var counterLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var noButton: UIButton!
+    @IBOutlet private weak var yesButton: UIButton!
+    
     private struct QuizStepViewModel {
         let image: UIImage
         let question: String
@@ -66,14 +73,11 @@ final class MovieQuizViewController: UIViewController {
     private var currentQuestionIndex = 0
     private var correctAnswers = 0
     
-    @IBOutlet private weak var questionTitleLabel: UILabel!
-    @IBOutlet private weak var counterLabel: UILabel!
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var textLabel: UILabel!
-    @IBOutlet private weak var noButton: UIButton!
-    @IBOutlet private weak var yesButton: UIButton!
-    
     // MARK: - Lifecycle
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
