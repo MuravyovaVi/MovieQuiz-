@@ -75,7 +75,7 @@ final class MovieQuizViewController: UIViewController {
     
     // MARK: - Lifecycle
     override var preferredStatusBarStyle: UIStatusBarStyle {
-          return .lightContent
+        return .lightContent
     }
     
     override func viewDidLoad() {
@@ -86,6 +86,8 @@ final class MovieQuizViewController: UIViewController {
         textLabel.font = UIFont(name: "YSDisplay-Bold", size: 23)
         noButton.titleLabel?.font = UIFont(name: "YSDisplay-Medium", size: 20)
         yesButton.titleLabel?.font = UIFont(name: "YSDisplay-Medium", size: 20)
+        noButton.isExclusiveTouch = true
+        yesButton.isExclusiveTouch = true
         let currentQuestion = questions[currentQuestionIndex]
         let preparedImage = convert(model: currentQuestion)
         show(quiz: preparedImage)
@@ -160,9 +162,9 @@ final class MovieQuizViewController: UIViewController {
     }
     
     private func changeStateButtons(isEnabled: Bool) {
-         yesButton.isEnabled = isEnabled
-         noButton.isEnabled = isEnabled
-     }
+        yesButton.isEnabled = isEnabled
+        noButton.isEnabled = isEnabled
+    }
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
         let currentQuestion = questions[currentQuestionIndex]
