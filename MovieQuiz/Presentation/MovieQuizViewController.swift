@@ -19,6 +19,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     private var questionFactory: QuestionFactoryProtocol?
     private var currentQuestion: QuizQuestion?
     private var alertPresenter: PresenterProtocol?
+    private var statisticService: StatisticServiceProtocol?
     
     // MARK: - Lifecycle
     
@@ -41,6 +42,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         self.questionFactory = questionFactory
         questionFactory.requestNextQuestion()
         alertPresenter = AlertPresenter(viewController: self)
+        statisticService = StatisticService()
     }
     
     // MARK: - QuestionFactoryDelegate
@@ -89,9 +91,15 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     private func showNextQuestionOrResults() {
         if currentQuestionIndex == questionsAmount - 1 {
-            let text = correctAnswers == questionsAmount ?
-            "Поздравляем, вы ответили на 10 из 10!" :
-            "Вы ответили на \(correctAnswers) из 10, попробуйте ещё раз!"
+            statisticService?.store(correct: correctAnswers, total: questionsAmount)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:ss"
+            let text = """
+Ваш результат: \(correctAnswers)/\(questionsAmount)
+Количество сыграных квизов: \(statisticService?.gamesCount ?? 0)
+Рекорд: \(statisticService?.bestGame.correct ?? 0)/\(questionsAmount)(\(String(describing: statisticService?.bestGame.date.dateTimeString ?? "")))
+Средняя точность: \(String(format: "%.2f", statisticService?.totalAccuracy ?? ""))%
+"""
             let alertModel = AlertModel(
                 title: "Этот раунд окончен!",
                 message: text,

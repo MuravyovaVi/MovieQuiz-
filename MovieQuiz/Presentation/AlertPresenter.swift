@@ -1,6 +1,6 @@
 import UIKit
 
-class AlertPresenter: PresenterProtocol {
+final class AlertPresenter: PresenterProtocol {
     private weak var viewController: UIViewController?
     
     init(viewController: UIViewController) {
