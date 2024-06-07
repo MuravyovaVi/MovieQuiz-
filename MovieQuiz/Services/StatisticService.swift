@@ -3,7 +3,7 @@ import Foundation
 final class StatisticService: StatisticServiceProtocol {
     private let storage: UserDefaults = .standard
     private enum Keys: String {
-        case correctAnswers, totalQuestions, bestGameCorrect, bestGameTotal, bestGameDate, gamesCount
+        case correctAnswers, totalQuestions, bestGame, gamesCount
     }
     
     private var correctAnswers: Int {
@@ -26,28 +26,33 @@ final class StatisticService: StatisticServiceProtocol {
     
     var gamesCount: Int {
         get {
-            storage.integer(forKey: "gamesCount")
+            storage.integer(forKey: Keys.gamesCount.rawValue)
         }
         set {
-            storage.set(newValue, forKey: "gamesCount")
+            storage.set(newValue, forKey: Keys.gamesCount.rawValue)
         }
     }
     
     var bestGame: GameResult {
         get {
-            let correct = storage.integer(forKey: "bestGame_correct")
-            let total = storage.integer(forKey: "bestGame_total")
-            let date = storage.object(forKey: "bestGame_date") as? Date ?? Date()
-            return GameResult(correct: correct, total: total, date: date)
+            guard let data = storage.data(forKey: Keys.bestGame.rawValue),
+                  let recordBestGame = try? JSONDecoder().decode(GameResult.self, from: data) else {
+                return GameResult(correct: 0, total: 0, date: Date())
+            }
+            return recordBestGame
         }
         set {
-            storage.set(newValue.correct, forKey: "bestGame_correct")
-            storage.set(newValue.total, forKey: "bestGame_total")
-            storage.set(newValue.date, forKey: "bestGame_date")
+            guard let data = try? JSONEncoder().encode(newValue) else {
+                return
+            }
+            storage.set(data, forKey: Keys.bestGame.rawValue)
         }
     }
     
     var totalAccuracy: Double?{
+        guard totalQuestions != 0 else {
+            return nil
+        }
         return (Double(correctAnswers) / Double(totalQuestions)) * 100
     }
     
