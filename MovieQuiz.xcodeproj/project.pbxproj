@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C07E2A12C206837001CDDC7 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07E2A02C206837001CDDC7 /* NetworkClient.swift */; };
 		3C27B5E92BAB50F9005076EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C27B5E82BAB50F9005076EF /* Assets.xcassets */; };
 		3C6F35EC2C09DDA600C791B8 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6F35E82C09DDA600C791B8 /* Array+Extensions.swift */; };
 		3C6F35ED2C09DDA600C791B8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6F35E92C09DDA600C791B8 /* Date+Extensions.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C07E2A02C206837001CDDC7 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		3C27B5E82BAB50F9005076EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C6F35E82C09DDA600C791B8 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		3C6F35E92C09DDA600C791B8 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				3C6F36052C0CE66700C791B8 /* PresenterProtocol.swift */,
 				3C6F36072C0E305700C791B8 /* StatisticServiceProtocol.swift */,
 				3C6F360C2C0E352E00C791B8 /* StatisticService.swift */,
+				3C07E2A02C206837001CDDC7 /* NetworkClient.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				3C6F35F82C0A04ED00C791B8 /* QuestionFactoryProtocol.swift in Sources */,
 				3C6F35FA2C0BBBDA00C791B8 /* QuestionFactoryDelegate.swift in Sources */,
 				3C6F360B2C0E340100C791B8 /* GameResult.swift in Sources */,
+				3C07E2A12C206837001CDDC7 /* NetworkClient.swift in Sources */,
 				3C6F36062C0CE66700C791B8 /* PresenterProtocol.swift in Sources */,
 				3C6F36042C0CE5D600C791B8 /* AlertModel.swift in Sources */,
 				AD1ABAB22831907B00B3E448 /* AppDelegate.swift in Sources */,
