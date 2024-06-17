@@ -53,7 +53,7 @@
                                         <rect key="frame" x="0.0" y="621.5" width="374" height="102.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xs6-Dh-hog">
-                                                <rect key="frame" x="0.0" y="0.0" width="42" height="102.5"/>
+                                                <rect key="frame" x="0.0" y="10" width="42" height="82.5"/>
                                                 <color key="backgroundColor" name="YP Background (iOS)"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="42" id="uyn-rd-O1d"/>
@@ -66,7 +66,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z61-X4-I74">
-                                                <rect key="frame" x="332" y="0.0" width="42" height="102.5"/>
+                                                <rect key="frame" x="332" y="10" width="42" height="82.5"/>
                                                 <color key="backgroundColor" name="YP Background (iOS)"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="42" id="wm6-9G-wKG"/>
@@ -117,10 +117,15 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eI9-7z-gM7">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="YP Black (iOS)"/>
                         <constraints>
+                            <constraint firstItem="eI9-7z-gM7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="19b-mZ-u5g"/>
+                            <constraint firstItem="eI9-7z-gM7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5lt-YV-Zy2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uGh-GQ-m3o" secondAttribute="bottom" id="Ylx-uc-hqd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uGh-GQ-m3o" secondAttribute="trailing" constant="20" id="bec-F5-CH4"/>
                             <constraint firstItem="uGh-GQ-m3o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="foU-UG-AaL"/>
@@ -128,6 +133,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="eI9-7z-gM7" id="OAE-us-Mjq"/>
                         <outlet property="counterLabel" destination="Q9D-fz-ryc" id="BBi-LE-gU0"/>
                         <outlet property="imageView" destination="EIk-9d-gy8" id="g1u-G3-ZSf"/>
                         <outlet property="noButton" destination="wSM-Id-Sre" id="fRm-6e-8N1"/>

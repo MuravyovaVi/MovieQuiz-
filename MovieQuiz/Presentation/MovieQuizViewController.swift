@@ -10,6 +10,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     @IBOutlet private weak var textLabel: UILabel!
     @IBOutlet private weak var noButton: UIButton!
     @IBOutlet private weak var yesButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
     
@@ -59,6 +60,11 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     }
     
     // MARK: - Private Methods
+    
+    private func showLoadingIndicator() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
     
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
         let questionStep = QuizStepViewModel(
