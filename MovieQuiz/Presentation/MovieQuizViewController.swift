@@ -38,12 +38,12 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         yesButton.titleLabel?.font = UIFont(name: "YSDisplay-Medium", size: 20)
         noButton.isExclusiveTouch = true
         yesButton.isExclusiveTouch = true
-        let questionFactory = QuestionFactory()
-        questionFactory.delegate = self
-        self.questionFactory = questionFactory
-        questionFactory.requestNextQuestion()
-        alertPresenter = AlertPresenter(viewController: self)
+        questionFactory = QuestionFactory(moviesLoader: MoviesLoader(), delegate: self)
         statisticService = StatisticService()
+        showLoadingIndicator()
+        questionFactory?.loadData()
+        
+        alertPresenter = AlertPresenter(viewController: self)
     }
     
     // MARK: - QuestionFactoryDelegate
