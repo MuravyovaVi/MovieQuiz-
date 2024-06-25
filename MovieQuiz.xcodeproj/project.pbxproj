@@ -14,6 +14,7 @@
 		3C07E2C72C25D6D7001CDDC7 /* MoviesLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07E2C62C25D6D7001CDDC7 /* MoviesLoaderTests.swift */; };
 		3C07E2CF2C25EC34001CDDC7 /* MovieQuizUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07E2CE2C25EC34001CDDC7 /* MovieQuizUITests.swift */; };
 		3C27B5E92BAB50F9005076EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C27B5E82BAB50F9005076EF /* Assets.xcassets */; };
+		3C6647F62C2AE77B00A41A17 /* MovieQuizPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6647F52C2AE77B00A41A17 /* MovieQuizPresenter.swift */; };
 		3C6F35EC2C09DDA600C791B8 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6F35E82C09DDA600C791B8 /* Array+Extensions.swift */; };
 		3C6F35ED2C09DDA600C791B8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6F35E92C09DDA600C791B8 /* Date+Extensions.swift */; };
 		3C6F35EE2C09DDA600C791B8 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6F35EA2C09DDA600C791B8 /* UIColor+Extensions.swift */; };
@@ -64,6 +65,7 @@
 		3C07E2CC2C25EC34001CDDC7 /* MovieQuizUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieQuizUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C07E2CE2C25EC34001CDDC7 /* MovieQuizUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuizUITests.swift; sourceTree = "<group>"; };
 		3C27B5E82BAB50F9005076EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3C6647F52C2AE77B00A41A17 /* MovieQuizPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuizPresenter.swift; sourceTree = "<group>"; };
 		3C6F35E82C09DDA600C791B8 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		3C6F35E92C09DDA600C791B8 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		3C6F35EA2C09DDA600C791B8 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				3C6F36012C0CE5AF00C791B8 /* AlertPresenter.swift */,
 				AD1ABAB52831907B00B3E448 /* MovieQuizViewController.swift */,
+				3C6647F52C2AE77B00A41A17 /* MovieQuizPresenter.swift */,
 				AD1ABAB72831907B00B3E448 /* Main.storyboard */,
 			);
 			path = Presentation;
@@ -389,6 +392,7 @@
 				AD1ABAB22831907B00B3E448 /* AppDelegate.swift in Sources */,
 				3C6F35F22C09ECE300C791B8 /* QuizStepViewModel.swift in Sources */,
 				3C6F35F62C09ED0B00C791B8 /* QuizQuestion.swift in Sources */,
+				3C6647F62C2AE77B00A41A17 /* MovieQuizPresenter.swift in Sources */,
 				3C6F36082C0E305700C791B8 /* StatisticServiceProtocol.swift in Sources */,
 				3C6F36022C0CE5AF00C791B8 /* AlertPresenter.swift in Sources */,
 				3C6F35F02C09E16E00C791B8 /* QuestionFactory.swift in Sources */,
@@ -653,10 +657,11 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -683,10 +688,11 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

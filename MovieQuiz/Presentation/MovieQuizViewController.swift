@@ -14,13 +14,12 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     // MARK: - Properties
     
-    private var currentQuestionIndex = 0
     private var correctAnswers = 0
-    private let questionsAmount: Int = 10
     private var questionFactory: QuestionFactoryProtocol?
     private var currentQuestion: QuizQuestion?
     private var alertPresenter: PresenterProtocol?
     private var statisticService: StatisticServiceProtocol?
+    private let presenter = MovieQuizPresenter()
     
     // MARK: - Lifecycle
     
@@ -53,7 +52,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             return
         }
         currentQuestion = question
-        let viewModel = convert(model: question)
+        let viewModel = presenter.convert(model: question)
         DispatchQueue.main.async { [weak self] in
             self?.show(quiz: viewModel)
         }
@@ -63,7 +62,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         hideLoadingIndicator()
         questionFactory?.requestNextQuestion()
     }
-
+    
     func didFailToLoadData(with error: Error) {
         showNetworkError(message: error.localizedDescription)
     } 
@@ -86,18 +85,11 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         let model = AlertModel(title: "Ошибка", message: message, buttonText: "Попробовать еще раз") { [weak self] in
             guard let self = self else {return}
             
-            self.currentQuestionIndex = 0
+            self.presenter.resetQuestionIndex()
             self.correctAnswers = 0
             self.questionFactory?.requestNextQuestion()
         }
         alertPresenter?.presentAlert(model: model)
-    }
-    
-    private func convert(model: QuizQuestion) -> QuizStepViewModel {
-        return QuizStepViewModel(
-            image: UIImage(data:model.image) ?? UIImage(),
-            question: model.text,
-            questionNumber: "\(currentQuestionIndex + 1)/\(questionsAmount)")
     }
     
     private func show(quiz step: QuizStepViewModel) {
@@ -122,14 +114,14 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     }
     
     private func showNextQuestionOrResults() {
-        if currentQuestionIndex == questionsAmount - 1 {
-            statisticService?.store(correct: correctAnswers, total: questionsAmount)
+        if presenter.isLastQuestion() {
+            statisticService?.store(correct: correctAnswers, total: presenter.questionsAmount)
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm:ss"
             let text = """
-Ваш результат: \(correctAnswers)/\(questionsAmount)
+Ваш результат: \(correctAnswers)/\(presenter.questionsAmount)
 Количество сыграных квизов: \(statisticService?.gamesCount ?? 0)
-Рекорд: \(statisticService?.bestGame.correct ?? 0)/\(questionsAmount)(\(String(describing: statisticService?.bestGame.date.dateTimeString ?? "")))
+Рекорд: \(statisticService?.bestGame.correct ?? 0)/\(presenter.questionsAmount)(\(String(describing: statisticService?.bestGame.date.dateTimeString ?? "")))
 Средняя точность: \(String(format: "%.2f", statisticService?.totalAccuracy ?? ""))%
 """
             let alertModel = AlertModel(
@@ -138,7 +130,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
                 buttonText: "Сыграть ещё раз") { [weak self] in
                     guard let self = self else {return}
                     
-                    self.currentQuestionIndex = 0
+                    self.presenter.resetQuestionIndex()
                     self.correctAnswers = 0
                     self.questionFactory?.requestNextQuestion()
                 }
@@ -146,7 +138,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             hideBorderForImageView()
             changeStateButtons(isEnabled: true)
         } else {
-            currentQuestionIndex += 1
+            presenter.switchToNextQuestion()
             questionFactory?.requestNextQuestion()
             hideBorderForImageView()
             changeStateButtons(isEnabled: true)
