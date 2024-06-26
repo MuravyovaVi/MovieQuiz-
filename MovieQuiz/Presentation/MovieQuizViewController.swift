@@ -60,7 +60,7 @@ final class MovieQuizViewController: UIViewController {
     func highlightImageBorder(isCorrectAnswer: Bool) {
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 8
-        imageView.layer.borderColor = isCorrectAnswer ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
+        imageView.layer.borderColor = isCorrectAnswer ? UIColor.ypGreenIOS.cgColor : UIColor.ypRedIOS.cgColor
     }
     
     func hideBorderForImageView() {
@@ -93,6 +93,7 @@ final class MovieQuizViewController: UIViewController {
             guard let self = self else { return }
         
             self.presenter.restartGame()
+            
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
