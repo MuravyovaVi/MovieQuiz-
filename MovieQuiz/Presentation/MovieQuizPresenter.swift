@@ -49,6 +49,10 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         }
     }
     
+    func loadData() {
+        questionFactory?.loadData()
+    }
+    
     func restartGame() {
         currentQuestionIndex = 0
         correctAnswers = 0

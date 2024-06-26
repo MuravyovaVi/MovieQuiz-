@@ -92,8 +92,9 @@ final class MovieQuizViewController: UIViewController {
                                    style: .default) { [weak self] _ in
             guard let self = self else { return }
         
+            self.showLoadingIndicator()
+            self.presenter.loadData()
             self.presenter.restartGame()
-            
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
