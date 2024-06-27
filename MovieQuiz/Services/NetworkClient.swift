@@ -1,6 +1,10 @@
 import Foundation
 
-struct NetworkClient {
+protocol NetworkRouting {
+    func fetch(url: URL, handler: @escaping (Result<Data, Error>) -> Void)
+}
+
+struct NetworkClient: NetworkRouting {
     
     private enum NetworkError: Error {
         case codeError
@@ -18,7 +22,7 @@ struct NetworkClient {
                 handler(.failure(NetworkError.codeError))
                 return
             }
-            guard let data = data else { return }
+            guard let data else { return }
             handler(.success(data))
         }
         task.resume()

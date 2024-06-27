@@ -84,7 +84,7 @@ final class QuestionFactory: QuestionFactoryProtocol {
             }
             let rating = Float(movie.rating) ?? 0
             let randomRatingInt = Int.random(in: 7...9)
-            let randomRatingFloat = Float(randomRatingInt)
+            let randomRatingFloat = Float()
             let text = "Рейтинг этого фильма больше чем \(randomRatingInt)?"
             let correctAnswer = rating > randomRatingFloat
             let question = QuizQuestion(image: imageData,
