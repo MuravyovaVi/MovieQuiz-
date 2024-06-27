@@ -1,6 +1,6 @@
 import UIKit
 
-final class MovieQuizViewController: UIViewController {
+final class MovieQuizViewController: UIViewController, MovieQuizViewControllerProtocol {
     
     // MARK: - IBOutlets
     
@@ -48,6 +48,7 @@ final class MovieQuizViewController: UIViewController {
             title: result.title,
             message: message,
             preferredStyle: .alert)
+        alert.view.accessibilityIdentifier = "GameResults"
         let action = UIAlertAction(title: result.buttonText, style: .default) { [weak self] _ in
             guard let self = self else { return }
             
