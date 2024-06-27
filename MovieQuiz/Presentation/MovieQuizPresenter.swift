@@ -104,24 +104,22 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
     
     private func proceedToNextQuestionOrResults() {
         if isLastQuestion() {
-            let text = correctAnswers == self.questionsAmount ?
-            "Поздравляем, вы ответили на 10 из 10!" :
-            "Вы ответили на \(correctAnswers) из 10, попробуйте ещё раз!"
+            let text = makeResultsMessage()
             let viewModel = QuizResultsViewModel(
                 title: "Этот раунд окончен!",
                 text: text,
                 buttonText: "Сыграть ещё раз")
-                self.viewController?.show(quiz: viewModel)
-                self.viewController?.hideBorderForImageView()
-                self.viewController?.changeStateButtons(isEnabled: true)
+            viewController?.show(quiz: viewModel)
+            viewController?.hideBorderForImageView()
+            viewController?.changeStateButtons(isEnabled: true)
         } else {
-            self.switchToNextQuestion()
-            self.questionFactory?.requestNextQuestion()
-            self.viewController?.changeStateButtons(isEnabled: true)
+            switchToNextQuestion()
+            questionFactory?.requestNextQuestion()
+            viewController?.changeStateButtons(isEnabled: true)
         }
     }
     
-    func makeResultsMessage() -> String {
+    private func makeResultsMessage() -> String {
         statisticService.store(correct: correctAnswers, total: questionsAmount)
         
         let bestGame = statisticService.bestGame

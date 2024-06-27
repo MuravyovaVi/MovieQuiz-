@@ -68,14 +68,13 @@ final class MovieQuizUITests: XCTestCase {
             sleep(2)
             app.buttons["No"].tap()
         }
-        
         let alert = app.alerts["Game Results"]
         alert.buttons.firstMatch.tap()
         
-        sleep(2)
+        sleep(3)
         
         let indexLabel = app.staticTexts["Index"]
-        
+
         XCTAssertFalse(alert.exists)
         XCTAssertTrue(indexLabel.label == "1/10")
     }
